@@ -1368,6 +1368,53 @@ a.contact-item:hover {
   border-color: var(--white);
 }
 
+/* Fiyat / bilgi tabloları (blog makaleleri) */
+.article-table-wrap {
+  overflow-x: auto;
+  margin: 26px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-300);
+}
+.article-content table.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  background: var(--white);
+  min-width: 540px;
+}
+.article-content table.price-table thead th {
+  background: var(--primary);
+  color: var(--white);
+  text-align: left;
+  font-weight: 700;
+  padding: 14px 16px;
+  font-size: 14px;
+}
+.article-content table.price-table tbody td {
+  padding: 13px 16px;
+  border-top: 1px solid var(--gray-100);
+  color: var(--gray-900);
+  vertical-align: top;
+}
+.article-content table.price-table tbody tr:nth-child(even) {
+  background: var(--gray-50);
+}
+.article-content table.price-table tbody td:last-child {
+  font-weight: 700;
+  color: var(--primary-dark);
+  white-space: nowrap;
+}
+.article-content .price-note {
+  font-size: 14px;
+  color: var(--gray-700);
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+
 @media (max-width: 1024px) {
   .blog-grid { grid-template-columns: repeat(2, 1fr); }
   .blog-card.featured { grid-column: span 2; flex-direction: column; }
