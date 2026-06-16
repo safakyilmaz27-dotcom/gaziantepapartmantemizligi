@@ -1,27 +1,43 @@
-// Mobil menü
+/* Gaziantep Ege Temizlik — etkileşim betikleri */
+
+// ---- İletişim bilgileri ----
+const WA_NUMBER = '905320630389';
+// Yeni Google Ads dönüşüm etiketi buraya yazılacak (ör. 'AW-XXXXXXXXX/abcDEF...').
+// Boş bırakılırsa dönüşüm gönderilmez, sadece WhatsApp'a yönlendirilir.
+const ADS_CONVERSION_SEND_TO = '';
+
+// ---- Mobil menü ----
 const menuToggle = document.getElementById('menuToggle');
 const nav = document.getElementById('nav');
 const header = document.getElementById('header');
 
-menuToggle.addEventListener('click', () => {
-  nav.classList.toggle('open');
+if (menuToggle && nav) {
+  menuToggle.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => nav.classList.remove('open'));
+  });
+}
+
+// ---- Scroll'da header gölgesi ----
+if (header) {
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+}
+
+// ---- SSS akordeonu ----
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.toggle('open');
+    answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : null;
+  });
 });
 
-// Menü linkine tıklayınca kapansın
-document.querySelectorAll('.nav a').forEach(link => {
-  link.addEventListener('click', () => nav.classList.remove('open'));
-});
-
-// Scroll'da header gölgesi
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 10) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
-});
-
-// Form gönderimi → WhatsApp'a yönlendir
+// ---- Form gönderimi → WhatsApp'a yönlendir ----
 function submitForm(e) {
   e.preventDefault();
-  const waNumber = '905451332859';
   const form = e.target;
 
   const fields = [];
@@ -38,9 +54,9 @@ function submitForm(e) {
     'Merhaba, gaziantepapartmantemizligi.com üzerinden teklif almak istiyorum.\n\n' +
     fields.join('\n');
 
-  const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
 
-  if (typeof gtag === 'function') {
+  if (typeof gtag === 'function' && ADS_CONVERSION_SEND_TO) {
     const telInput = form.querySelector('input[type="tel"]');
     const rawPhone = telInput ? (telInput.value || '').replace(/\D/g, '') : '';
     let phoneE164 = '';
@@ -50,11 +66,10 @@ function submitForm(e) {
       else if (rawPhone.length === 10) phoneE164 = '+90' + rawPhone;
       else phoneE164 = '+' + rawPhone;
     }
-    if (phoneE164) {
-      gtag('set', 'user_data', { phone_number: phoneE164 });
-    }
+    if (phoneE164) gtag('set', 'user_data', { phone_number: phoneE164 });
+
     gtag('event', 'conversion', {
-      'send_to': 'AW-18098874554/gdk-CLzprq4cELrRm7ZD',
+      'send_to': ADS_CONVERSION_SEND_TO,
       'value': 50.0,
       'currency': 'TRY',
       'event_callback': function () { window.location.href = url; }
@@ -66,19 +81,14 @@ function submitForm(e) {
   return false;
 }
 
-// Kayan giriş animasyonu
+// ---- Kayan giriş animasyonu ----
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.12 });
 
-document.querySelectorAll('.service-card, .region-card, .why-card, .testimonial, .feature').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));

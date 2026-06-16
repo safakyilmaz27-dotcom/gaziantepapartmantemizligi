@@ -1,22 +1,29 @@
-# Gaziantep Apartman Temizliği
+# Gaziantep Ege Temizlik
 
-Gaziantep'te faaliyet gösteren profesyonel apartman bina temizliği ve daire çöp toplama firması için modern, mobil uyumlu kurumsal website.
+Gaziantep'te apartman ortak alan temizliği, ev ve daire temizliği, halı & koltuk yıkama ve kapıdan çöp alımı hizmeti veren firma için modern, mobil uyumlu kurumsal website.
 
 ## Özellikler
 
-- Modern ve responsive tasarım
+- Modern, responsive tasarım (Ege esintili lacivert + deniz mavisi + amber tema)
 - Mobil uyumlu (telefon, tablet, masaüstü)
 - Sticky header ve yüzen iletişim butonları
-- Hızlı teklif formu
-- 6 farklı hizmet kategorisi
+- Hızlı teklif formu (WhatsApp'a yönlendirir)
 - Hizmet bölgesi tanıtımı (Şehitkamil, Şahinbey, Karataş, Gazikent)
-- Müşteri yorumları
-- WhatsApp ve telefon hızlı erişim
+- SSS akordeonu, müşteri yorumları
+- Blog: özgün temizlik rehberleri
 
 ## İletişim
 
-- **Telefon:** 0545 133 28 59
-- **Hizmet Bölgesi:** Gaziantep
+- **Marka:** Gaziantep Ege Temizlik
+- **Telefon:** 0532 063 03 89
+- **Hizmet Bölgesi:** Gaziantep geneli
+
+## Ölçümleme (kurulum sonrası doldurulacak)
+
+`index.html` baş kısmındaki yorum bloğuna yeni ve **ayrı** hesaplar eklenecek:
+- Google Tag Manager (GTM-XXXXXXX)
+- GA4 (G-XXXXXXXXXX)
+- Google Ads (AW-XXXXXXXXX) → ayrıca `script.js` içindeki `ADS_CONVERSION_SEND_TO`
 
 ## Kullanılan Teknolojiler
 
