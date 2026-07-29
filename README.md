@@ -15,7 +15,7 @@ Gaziantep'te apartman ortak alan temizliği, ev ve daire temizliği, halı & kol
 ## İletişim
 
 - **Marka:** Gaziantep Ege Temizlik
-- **Telefon:** 0532 063 03 89
+- **Telefon:** 0532 226 00 15
 - **Hizmet Bölgesi:** Gaziantep geneli
 
 ## Ölçümleme (kurulum sonrası doldurulacak)

@@ -1,7 +1,7 @@
 /* Gaziantep Ege Temizlik — etkileşim betikleri */
 
 // ---- İletişim bilgileri ----
-const WA_NUMBER = '905320630389';
+const WA_NUMBER = '905322260015';
 // Yeni Google Ads dönüşüm etiketi buraya yazılacak (ör. 'AW-XXXXXXXXX/abcDEF...').
 // Boş bırakılırsa dönüşüm gönderilmez, sadece WhatsApp'a yönlendirilir.
 const ADS_CONVERSION_SEND_TO = '';
