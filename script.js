@@ -1,5 +1,9 @@
 /* Gaziantep Ege Temizlik — etkileşim betikleri */
 
+// ---- Reveal: gizleme kuralını yalnızca JS çalışınca aç ----
+// CSS opacity:0 kuralı html.js-reveal altında; JS çalışmazsa içerik baştan görünür kalır.
+document.documentElement.classList.add("js-reveal");
+
 // ---- İletişim bilgileri ----
 const WA_NUMBER = '905322260015';
 // Yeni Google Ads dönüşüm etiketi buraya yazılacak (ör. 'AW-XXXXXXXXX/abcDEF...').
@@ -91,4 +95,8 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const revealEls = document.querySelectorAll(".reveal");
+revealEls.forEach(el => observer.observe(el));
+
+// Güvenlik ağı: observer tetiklenmezse birkaç saniye sonra tüm blokları aç.
+setTimeout(() => revealEls.forEach(el => el.classList.add("in")), 2500);

@@ -459,7 +459,9 @@ a.contact-item:hover { border-color: var(--blue); }
 .article .cta-inline h3 { color: #fff; margin-bottom: 8px; }
 .article .cta-inline p { color: #cfe0f5; margin-bottom: 18px; }
 
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
+/* Gizleme yalnizca JS calisirken devreye girer: js-reveal sinifini script.js ekler.
+   Boylece JS calismazsa veya IntersectionObserver tetiklenmezse icerik bastan gorunur kalir. */
+html.js-reveal .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+html.js-reveal .reveal.in { opacity: 1; transform: none; }
 
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } html.js-reveal .reveal { opacity: 1; transform: none; } }
